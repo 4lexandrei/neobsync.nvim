@@ -8,6 +8,10 @@ local last_cursor_line = -1
 local total_lines
 local frontmatter_lines
 
+if utils.is_in_vault() then
+	active = true
+end
+
 local function on_cursor_moved()
 	if active and utils.is_in_vault() then
 		local current_line = vim.api.nvim_win_get_cursor(0)[1]
@@ -53,10 +57,6 @@ end
 vim.api.nvim_create_user_command("ToggleNeobsync", M.toggle_neobsync, {})
 
 -- keymaps
-vim.keymap.set("n", "<leader>coh", M.toggle_neobsync, { desc = "ToggleNeobsync", noremap = true, silent = true })
-
-if utils.is_in_vault() then
-	active = true
-end
+vim.keymap.set("n", "<leader>co", M.toggle_neobsync, { desc = "ToggleNeobsync", noremap = true, silent = true })
 
 return M

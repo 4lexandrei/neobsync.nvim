@@ -16,7 +16,7 @@ end
 
 function M.get_buffer_data()
 	local full_path = vim.fn.expand("%:p")
-	local relative_path = full_path:gsub(config.vault_path .. "/", "")
+	local relative_path = full_path:gsub(config.vault_path, "")
 	return {
 		method = "updateBuffer",
 		params = {
