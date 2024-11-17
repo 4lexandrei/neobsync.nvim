@@ -2,6 +2,9 @@
 
 neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 
+> [!NOTE]
+> This plugin works alongside [`neobsync-obsidian`](https://github.com/4lexandrei/neobsync-obsidian)
+
 ## Features
 
 > ✅️ Available
