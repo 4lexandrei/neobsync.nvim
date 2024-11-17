@@ -9,7 +9,7 @@ function M.get_cursor_data(total_lines, frontmatter_lines)
 		params = {
 			line = line,
 			total_lines = total_lines,
-			frontmatter_lines = frontmatter_lines + 3,
+			frontmatter_lines = frontmatter_lines,
 		},
 	}
 end

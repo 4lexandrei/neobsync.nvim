@@ -18,7 +18,7 @@ function M.calculate_frontmatter_lines()
 			end
 		end
 	end
-	return count
+	return count + 3
 end
 
 return M
