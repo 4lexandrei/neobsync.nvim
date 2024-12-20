@@ -37,7 +37,8 @@ Local installation
 ```
 > [!NOTE]
 > Please note that on Windows, paths use backslashes `\` instead of forward slashes `/`.
-> `dir = "C:\\Users\\user\\neovim_plugins\\Neobsync.nvim"`
+>
+> `dir = "C:\\Users\\user\\neovim_plugins\\neobsync.nvim"`
 > `vault_path = "C:\\Users\\user\\Documents\\Notes\\"`
 
 ## Usage
