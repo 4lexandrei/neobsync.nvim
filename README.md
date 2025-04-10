@@ -6,6 +6,7 @@ neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 > This plugin works alongside [`neobsync-obsidian`](https://github.com/4lexandrei/neobsync-obsidian)
 
 ## Features
+
 - Scroll sync
 - Buffer sync
 - Linux and Windows support
@@ -15,12 +16,13 @@ neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 Local installation
 
 ```bash
-  git clone git@github.com:4lexandrei/neobsync.nvim.git
+  git clone https://github.com/4lexandrei/neobsync.nvim.git
 ```
 
 ## Configuration
 
 `neobsync.lua`
+
 ```lua
 {
   "neobsync.nvim",
@@ -35,14 +37,14 @@ Local installation
   end,
 },
 ```
+
 > [!NOTE]
 > Please note that on Windows, paths use backslashes `\` instead of forward slashes `/`.
 >
-> `dir = "C:\\Users\\user\\neovim_plugins\\neobsync.nvim"`
-> `vault_path = "C:\\Users\\user\\Documents\\Notes\\"`
+> `dir = "C:\\Users\\user\\neovim_plugins\\neobsync.nvim"` > `vault_path = "C:\\Users\\user\\Documents\\Notes\\"`
 
 ## Usage
 
-| Keymap       | Action          |
-|:------------:|:---------------:|
+|    Keymap    |     Action      |
+| :----------: | :-------------: |
 | `<leader>co` | Toggle Neobsync |
