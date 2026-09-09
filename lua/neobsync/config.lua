@@ -1,13 +1,29 @@
+---@class neobsync.Config
+---@field vault_path string|nil Obsidian vault path. If nil, automatically detects the vault.
+---@field HOST string UDP destination host.
+---@field PORT number UDP destination port.
 local M = {}
 
-M.vault_path = nil
-M.HOST = "127.0.0.1"
-M.PORT = 9000
+---@type neobsync.Config
+local defaults = {
+	vault_path = nil,
+	HOST = "127.0.0.1",
+	PORT = 9000,
+}
 
-function M.setup(config)
-	M.vault_path = config.vault_path or M.vault_path
-	M.HOST = config.HOST or M.HOST
-	M.PORT = config.PORT or M.PORT
+---@param opts? neobsync.Config
+---@return neobsync.Config
+function M.setup(opts)
+	opts = opts or {}
+
+	if opts.vault_path then
+		M.vault_path = vim.fs.normalize(opts.vault_path)
+	end
+
+	M.HOST = opts.HOST or defaults.HOST
+	M.PORT = opts.PORT or defaults.PORT
+
+	return M
 end
 
 return M

@@ -3,7 +3,7 @@
 neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 
 > [!NOTE]
-> This plugin works alongside [`neobsync-obsidian`](https://github.com/4lexandrei/neobsync-obsidian)
+> Requires [`neobsync-obsidian`](https://github.com/4lexandrei/neobsync-obsidian) community plugin installed in your Obsidian vault.
 
 ## Features
 
@@ -11,40 +11,59 @@ neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 - Buffer sync
 - Linux and Windows support
 
-## Installation
+## 📦 Installation
 
-Local installation
+Using `lazy.nvim`
+
+```lua
+{
+  "4lexandrei/neobsync.nvim",
+  ft = "markdown",
+  opts = {
+    vault_path = "path_to_vault", -- Optional: auto detected via `.obsidian`. Example: /home/user/Documents/Notes/
+    HOST = "127.0.0.1",
+    PORT = 9000,
+  }
+},
+```
+
+> [!NOTE]
+> On Windows, paths require double backslashes `\\` instead of forward slashes `/`.
+>
+> `vault_path = "C:\\Users\\username\\Documents\\Notes\\"`
+> `dir = "C:\\Users\\username\\neovim_plugins\\neobsync.nvim"`
+
+## 🚀 Usage
+
+### Commands
+
+|      Command       |         Action         |
+| :----------------: | :--------------------: |
+| `:Neobsync toggle` |    Toggle neobsync     |
+| `:Neobsync status` | Display current status |
+
+### Keymaps
+
+|    Keymap    |     Action      |
+| :----------: | :-------------: |
+| `<leader>co` | Toggle neobsync |
+
+## 🛠️ Development setup
 
 ```bash
   git clone https://github.com/4lexandrei/neobsync.nvim.git
 ```
 
-## Configuration
-
-`neobsync.lua`
-
 ```lua
 {
-  "neobsync.nvim",
+  "4lexandrei/neobsync.nvim",
   dir = "path_to_plugin", -- example: /home/user/neovim_plugins/neobsync.nvim
-  config = function()
-    require("neobsync.config").setup({
-      vault_path = "path_to_vault", -- example: /home/user/Documents/Notes/
-      HOST = "127.0.0.1",
-      PORT = 9000,
-    })
-    require("neobsync").setup()
-  end,
+  dev = true,
+  ft = "markdown",
+  opts = {
+    vault_path = "path_to_vault", -- Optional: auto detected via `.obsidian`. Example: /home/user/Documents/Notes/
+    HOST = "127.0.0.1",
+    PORT = 9000,
+  }
 },
 ```
-
-> [!NOTE]
-> Please note that on Windows, paths use backslashes `\` instead of forward slashes `/`.
->
-> `dir = "C:\\Users\\user\\neovim_plugins\\neobsync.nvim"` > `vault_path = "C:\\Users\\user\\Documents\\Notes\\"`
-
-## Usage
-
-|    Keymap    |     Action      |
-| :----------: | :-------------: |
-| `<leader>co` | Toggle Neobsync |

@@ -1,11 +1,13 @@
+local uv = vim.uv or vim.loop
 local config = require("neobsync.config")
 
+---@class neobsync.Udp
 local M = {}
 local udp_client = nil
 
 function M.start()
 	if not udp_client then
-		udp_client = vim.uv.new_udp()
+		udp_client = uv.new_udp()
 	end
 end
 

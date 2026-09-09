@@ -1,11 +1,5 @@
-local config = require("neobsync.config")
-
+---@class neobsync.Markdown
 local M = {}
-
-function M.is_in_vault()
-	local full_path = vim.fn.expand("%:p")
-	return full_path:find(config.vault_path, 1, true) ~= nil
-end
 
 function M.calculate_frontmatter_lines()
 	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
