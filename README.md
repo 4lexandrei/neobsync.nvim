@@ -5,7 +5,7 @@ neobsync.nvim is a plugin for Neovim that allows synchronization with Obsidian.
 > [!NOTE]
 > Requires [`neobsync-obsidian`](https://github.com/4lexandrei/neobsync-obsidian) community plugin installed in your Obsidian vault.
 
-## Features
+## ✨ Features
 
 - Scroll sync
 - Buffer sync
@@ -20,33 +20,48 @@ Using `lazy.nvim`
   "4lexandrei/neobsync.nvim",
   ft = "markdown",
   opts = {
-    vault_path = "path_to_vault", -- Optional: auto detected via `.obsidian`. Example: /home/user/Documents/Notes/
-    HOST = "127.0.0.1",
-    PORT = 9000,
+    vault_path = nil, -- Optional string path to the Obsidian vault, or nil to auto-detect via `.obsidian`. (e.g., "~/Documents/Notes/")
+    HOST = "127.0.0.1", -- UDP listener host
+    PORT = 9000, -- UDP listener port (must match neobsync-obsidian port)
   }
 },
 ```
 
 > [!NOTE]
-> On Windows, paths require double backslashes `\\` instead of forward slashes `/`.
+>
+> - Manual paths - harcoded path strings:
+>
+> ```lua
+> vault_path = "/home/username/Documents/Notes/" -- Linux
+> vault_path = "C:\\Users\\username\\Documents\\Notes\\" -- Windows
+> ```
+>
+> - Dynamic paths `os.getenv` - recommended for cross-platform configurations:
+>
+> ```lua
+> vault_path = os.getenv("HOME") .. "/Documents/Notes/" -- Linux
+> vault_path = os.getenv("USERPROFILE") .. "\\Documents\\Notes\\" -- Windows
+>
+> ```
 >
 > `vault_path = "C:\\Users\\username\\Documents\\Notes\\"`
-> `dir = "C:\\Users\\username\\neovim_plugins\\neobsync.nvim"`
 
 ## 🚀 Usage
 
 ### Commands
 
-|      Command       |         Action         |
-| :----------------: | :--------------------: |
-| `:Neobsync toggle` |    Toggle neobsync     |
-| `:Neobsync status` | Display current status |
+|      Command       |             Action              |
+| :----------------: | :-----------------------------: |
+| `:Neobsync toggle` |         Toggle Neobsync         |
+| `:Neobsync status` |     Display current status      |
+|  `:Neobsync open`  | Open current buffer in Obsidian |
 
 ### Keymaps
 
-|    Keymap    |     Action      |
-| :----------: | :-------------: |
-| `<leader>co` | Toggle neobsync |
+|    Keymap     |             Action              |
+| :-----------: | :-----------------------------: |
+| `<leader>cnt` |         Toggle Neobsync         |
+| `<leader>cno` | Open current buffer in Obsidian |
 
 ## 🛠️ Development setup
 
@@ -61,9 +76,13 @@ Using `lazy.nvim`
   dev = true,
   ft = "markdown",
   opts = {
-    vault_path = "path_to_vault", -- Optional: auto detected via `.obsidian`. Example: /home/user/Documents/Notes/
+    vault_path = nil,
     HOST = "127.0.0.1",
     PORT = 9000,
   }
 },
 ```
+
+## 💖 Acknowledgements
+
+Special thanks to [lumen-oss/nvim-best-practices](https://github.com/lumen-oss/nvim-best-practices) for providing valuable neovim plugin development guidelines.
