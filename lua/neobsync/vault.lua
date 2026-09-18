@@ -36,4 +36,37 @@ function M.contains_current_buffer(bufnr)
 	return M.find_root(bufnr) ~= nil
 end
 
+---@param bufnr? integer
+---@return string|nil
+function M.get_relative_path(bufnr)
+	bufnr = bufnr or 0
+
+	local root = M.find_root(bufnr)
+	if not root then
+		return nil
+	end
+
+	local full_path = vim.fs.normalize(vim.api.nvim_buf_get_name(bufnr))
+	if full_path:sub(1, #root) ~= root then
+		return nil
+	end
+
+	local relative_path = full_path:sub(#root + 1):gsub("^/", "")
+
+	return relative_path
+end
+
+---@param bufnr? integer
+---@return string|nil
+function M.get_name(bufnr)
+	bufnr = bufnr or 0
+	local root = M.find_root(bufnr)
+
+	if not root then
+		return nil
+	end
+
+	return vim.fs.basename(root)
+end
+
 return M

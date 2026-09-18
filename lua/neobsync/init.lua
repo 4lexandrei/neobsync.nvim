@@ -1,6 +1,7 @@
 local config = require("neobsync.config")
 local lifecycle = require("neobsync.lifecycle")
 local autocmds = require("neobsync.autocmds")
+local obsidian = require("neobsync.obsidian")
 
 local M = {}
 
@@ -24,6 +25,10 @@ end
 
 function M.status()
 	lifecycle.status()
+end
+
+function M.open_obsidian()
+	obsidian.open()
 end
 
 return M
